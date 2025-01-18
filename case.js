@@ -6003,7 +6003,7 @@ module.exports = haruka = async (haruka, m, msg, chatUpdate, store) => {
 								m.chat,
 								{
 									video: { url: imgs.url },
-									caption: `🎥 *Video Info* :\n📍 Region: ${anu.region}\n⏳ Duration: ${anu.duration}\n📅 Taken: ${anu.taken_at}\n\n📊 *Statistik Info* :\n👁️ Views: ${anu.stats.views}\n❤️ Likes: ${anu.stats.likes}\n💬 Comment: ${anu.stats.comment}\n🔄 Share: ${anu.stats.share}\n📥 Download: ${anu.stats.download}\n\n👤 *Author Info* :\n📝 Fullname: ${anu.author.fullname}\n🏷️ Nickname: ${anu.author.nickname}\n\n🎵 *Music Info* :\n🎼 Title: ${anu.music_info.title}\n🎤 Author: ${anu.music_info.author}\n💿 Album: ${anu.music_info.album}\n\n📝 *Caption* :\n${anu.title || 'No Caption'}`
+									caption: ``
 								},
 								{ quoted: m }
 							);
@@ -6014,7 +6014,7 @@ module.exports = haruka = async (haruka, m, msg, chatUpdate, store) => {
 									m.chat,
 									{
 										image: { url: imgs.url },
-										caption: `🖼️ *Photo Info* :\n📍 Region: ${anu.region}\n📅 Taken: ${anu.taken_at}\n\n📊 *Statistik Info* :\n👁️ Views: ${anu.stats.views}\n❤️ Likes: ${anu.stats.likes}\n💬 Comment: ${anu.stats.comment}\n🔄 Share: ${anu.stats.share}\n📥 Download: ${anu.stats.download}\n\n👤 *Author Info* :\n📝 Fullname: ${anu.author.fullname}\n🏷️ Nickname: ${anu.author.nickname}\n\n🎵 *Music Info* :\n🎼 Title: ${anu.music_info.title}\n🎤 Author: ${anu.music_info.author}\n💿 Album: ${anu.music_info.album}\n\n📝 *Caption* :\n${anu.title || 'No Caption'}${m.isGroup ? anu.data.length > 1 ? "\n📥 _Sisa foto dikirim ke private chat_\n" : "\n" : "\n"}`
+										caption: ``
 									},
 									{ quoted: m }
 								);
@@ -6052,11 +6052,7 @@ module.exports = haruka = async (haruka, m, msg, chatUpdate, store) => {
 					await haruka.sendMessage(
 						m.chat,
 						{
-							text: `🎵 *TikTok Audio*\n\n` +
-							`🎼 *Title:* ${anu.music_info.title || '-'}\n` +
-							`🎤 *Author:* ${anu.music_info.author || '-'}\n` +
-							`💿 *Album:* ${anu.music_info.album || '-'}\n\n` +
-							`🔗 *Source:* ${text}`
+							text: ``
 						},
 						{ quoted: m }
 					);
@@ -6085,24 +6081,11 @@ module.exports = haruka = async (haruka, m, msg, chatUpdate, store) => {
 				try {
 					await reactionMessage('⏱️');
 					let search = await tiktokSearchVideo(text);
-					let teks = `🎥 *${search.videos[0].title}*\n\n` +
-					`🆔 *Video ID* : ${search.videos[0].video_id}\n` +
-					`👤 *Username* : ${search.videos[0].author.unique_id}\n` +
-					`🏷️ *Nickname* : ${search.videos[0].author.nickname}\n` +
-					`⏳ *Duration* : ${search.videos[0].duration} detik\n` +
-					`❤️ *VT Like* : ${search.videos[0].digg_count}\n` +
-					`💬 *Comment* : ${search.videos[0].comment_count}\n` +
-					`🔄 *Share* : ${search.videos[0].share_count}\n\n` +
-					`🔗 *Link*: https://www.tiktok.com/@${search.videos[0].author.unique_id}/video/${search.videos[0].video_id}`;
+					let teks = ``;
 					let list = '';
 					let no = 1;
 					for (let i of search.videos) {
-						list += `\n${no++}. 🎵 *${i.title}*\n` +
-						`⏳ Duration: ${i.duration} detik\n` +
-						`❤️ Likes: ${i.digg_count}\n` +
-						`💬 Comments: ${i.comment_count}\n` +
-						`🔄 Shares: ${i.share_count}\n` +
-						`🔗 Link: https://www.tiktok.com/@${i.author.unique_id}/video/${i.video_id}\n`;
+						list += ``;
 					}
 					await haruka.sendMessage(
 						m.chat,
